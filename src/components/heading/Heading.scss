@@ -1,0 +1,30 @@
+.heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    
+    &__icon {
+        background-image: url(../../assets/icons/black-belt.png);
+        background-repeat: no-repeat;
+        color: blue;
+        width: 2rem;
+        height: 2rem;
+        background-size: contain;
+
+    }
+
+    &__logo {
+
+    }
+
+    &__setting {
+        background-image: url(../../assets/icons/setting.png);
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        background-size: contain;
+
+    }
+}
