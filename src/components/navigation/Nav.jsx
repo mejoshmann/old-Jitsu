@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AddTraining from "../../Pages/AddTraining";
 import './Nav.scss';
 function Nav() {
     return(
@@ -8,10 +9,13 @@ function Nav() {
                 <div className="nav__home"></div>
                 </Link>
                 <Link to="/Activity">
-                <div className="nav__activity"></div>
+                <div className="nav__activity">
+                </div>
                 </Link>
-                <Link to="/AddTraining">
-                <div className="nav__add"></div>
+                <Link to="/Training">
+                <div className="nav__add">
+
+                </div>
                 </Link>
 
                 <div className="nav__bell"></div>

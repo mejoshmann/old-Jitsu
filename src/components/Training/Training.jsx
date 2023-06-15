@@ -105,6 +105,9 @@ function Training() {
         <label htmlFor="journal" className="form__journal">
           <textarea type="text" className="form__journal-input" />
         </label>
+        <label htmlFor="submit" className="form__submit">
+          <button className="form__submit--button" id="submit">Add Training</button>
+        </label>
       </form>
     </>
   );

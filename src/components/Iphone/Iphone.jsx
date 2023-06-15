@@ -1,4 +1,8 @@
 import "./Iphone.scss";
+import Nav from "../navigation/Nav";
+import Heading from "../heading/Heading";
+import News from "../News/News";
+import Training from "../Training/Training";
 
 function Iphone() {
   return (
@@ -46,7 +50,10 @@ function Iphone() {
                 <div class="prox"></div>
               </div>
             </div>
+            <Heading/>
+            {/* <Training /> */}
 
+            <Nav/>
             <div class="batteryBar">
               <div class="batter">
                 <div class="e"></div>
@@ -54,7 +61,9 @@ function Iphone() {
               100%
             </div>
           </div>
+          
         </div>
+        
       </div>
     </>
   );

@@ -7,18 +7,20 @@
   }
   
   .container{
-    // height: 100vh;
-    // position:relative;
+    height: 100%;
+    position:relative;
   }
   
   .phone{
     background-color:#000;
     max-width:605px;
+    // width: 100%;
     margin:auto;
     margin-top:100px;
     margin-bottom:100px;
     border-radius:100px;
-    height:1200px;
+    height:75rem;
+    // height: 100vh;
     position:relative;
     min-width:520px;
     box-shadow:0px 0px 100px 1px rgba(0,0,0,0.2);
@@ -76,6 +78,7 @@
   }
   
   .screen{
+    background-color: #fff;
     height:95.9%;
     width:93.8%;
     background-size:cover;
