@@ -15,9 +15,9 @@ function Nav() {
                 </Link>
 
                 <div className="nav__bell"></div>
-                <Profile to="/Profile">
+                <Link to="/Profile">
                 <div className="nav__profile"></div>
-                </Profile>
+                </Link>
             </nav>
         </div>
     )
