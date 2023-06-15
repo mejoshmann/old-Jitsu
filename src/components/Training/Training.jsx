@@ -50,10 +50,10 @@ function Training() {
           </button>
           {showButtons.button1 && (
             <div className="button-container">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button>4</button>
+              <button>Single Leg</button>
+              <button>Double Leg</button>
+              <button>Osoto Gari</button>
+              <button>Shoulder Throw</button>
             </div>
           )}
 
@@ -65,10 +65,10 @@ function Training() {
           </button>
           {showButtons.button2 && (
             <div className="button-container">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button>4</button>
+              <button>Guard</button>
+              <button>Side Control</button>
+              <button>Mount</button>
+              <button>Back Control</button>
             </div>
           )}
 
@@ -80,10 +80,10 @@ function Training() {
           </button>
           {showButtons.button3 && (
             <div className="button-container">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button>4</button>
+              <button>Triangle</button>
+              <button>Arm Bar</button>
+              <button>Guillotine</button>
+              <button>Rear Naked Choke</button>
             </div>
           )}
 
@@ -91,14 +91,14 @@ function Training() {
             className="form__button"
             onClick={(e) => handleButtonClick("button4", e)}
           >
-            Escapes
+            Movements
           </button>
           {showButtons.button4 && (
             <div className="button-container">
-              <button>1</button>
-              <button>2</button>
-              <button>3</button>
-              <button>4</button>
+              <button>Bridging</button>
+              <button>Shrimping</button>
+              <button>Escapes</button>
+              <button>Guard Passes</button>
             </div>
           )}
         </div>
