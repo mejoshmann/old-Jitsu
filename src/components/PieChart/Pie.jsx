@@ -1,59 +1,68 @@
-import React, { useCallback, useState } from "react";
+import {  useState } from "react";
+import { useEffect } from "react";
 import { PieChart, Pie, Cell } from "recharts";
-
-const data = [
-    
-  { name: "Gi", value: 200 },
-  { name: "No Gi", value: 100 },
- 
-];
+import axios from "axios";
 
 const COLORS = ["#0088FE", "#00C49F"];
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index
-}: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
 function GiNoGi() {
+
+  const [pieChartData, setPieChartData] = useState([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get("http://localhost:1080/");
+          const data = response.data;
+          const { gi, nogi } = data[data.length - 1];
+
+          setPieChartData([
+            {name: "Gi", value: gi},
+            {name: "No Gi", value: nogi},
+          ]);
+        } catch (error) {
+          console.error("Error fetching chart data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
+
   return (
-    <PieChart width={400} height={400}>
+    <div className="pie">
+    <PieChart width={300} height={300}>
       <Pie
-        data={data}
+        data={pieChartData}
         cx={200}
         cy={200}
         labelLine={false}
-        label={renderCustomizedLabel}
         outerRadius={80}
         fill="#8884d8"
         dataKey="value"
+        label={({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+          const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+          const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
+          const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
+
+          return (
+            <text
+              x={x}
+              y={y}
+              fill="white"
+              textAnchor={x > cx ? "start" : "end"}
+              dominantBaseline="central"
+            >
+              {`${(percent * 100).toFixed(0)}%`}
+            </text>
+          );
+        }}
       >
-        {data.map((_entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        {pieChartData.map((_entry, index) => (
+          <Cell key={index} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
     </PieChart>
+    </div>
   );
 }
 

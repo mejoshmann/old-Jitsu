@@ -51,7 +51,8 @@ function Iphone() {
               </div>
             </div>
             <Heading/>
-            {/* <Training /> */}
+            
+            <Training />
 
             <Nav/>
             <div class="batteryBar">

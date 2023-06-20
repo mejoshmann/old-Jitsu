@@ -8,13 +8,14 @@ function Nav() {
                <Link to="/">
                 <div className="nav__home"></div>
                 </Link>
+                
                 <Link to="/Activity">
                 <div className="nav__activity">
                 </div>
                 </Link>
+
                 <Link to="/Training">
                 <div className="nav__add">
-
                 </div>
                 </Link>
 

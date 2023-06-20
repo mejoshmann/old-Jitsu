@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -10,71 +12,44 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import "./Chart.scss";
 
 
-const data = [
-    {
-        name: "Jan",
-        uv: 10,
-    },
-    {
-        name: "Feb",
-        uv: 5,
-    },
-    {
-        name: "Mar",
-        uv: 6,
-    },
-    {
-        name: "Apr",
-        uv: 10,
-    },
-    {
-        name: "May",
-        uv: 10,
-    },
-    {
-        name: "Jun",
-        uv: 5,
-    },
-    {
-        name: "Jul",
-        uv: 6,
-    },
-    {
-        name: "Aug",
-        uv: 10,
-    },
-    {
-        name: "Sep",
-        uv: 10,
-    },
-    {
-        name: "Oct",
-        uv: 5,
-    },
-    {
-        name: "Nov",
-        uv: 6,
-    },
-    {
-        name: "Dec",
-        uv: 24,
-    }
-];
+
 
 function Chart() {
+
+    const [chartData, setChartData] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+          try {
+            const response = await axios.get("http://localhost:1080/");
+
+            setChartData(response.data);
+
+          } catch (error) {
+            console.error("Error fetching chart data:", error);
+          }
+        };
+    
+        getData();
+      }, []);
+
+
+
+
   return (
-    <>
-      <BarChart width={550} height={150} data={data}>
+    <div className="barChart">
+      <BarChart width={550} height={150} data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="month" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="uv" fill="#82ca9d" />
+        <Bar dataKey="Days" fill="#82ca9d" />
       </BarChart>
-    </>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ import Iphone from "../components/Iphone/Iphone";
 function AddTraining() {
     return(
         <>
-        <Iphone/>
+        
         <Training/>
         </>
     )
