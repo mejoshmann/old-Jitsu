@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-// import ReactSlider from "react-slider";
 import "./ProfileData.scss";
 
 function ProfileData() {
+
   const [formData, setFormData] = useState({
     name: "",
     belt: "",
@@ -14,13 +14,14 @@ function ProfileData() {
     school: "",
     bio: "",
   });
-  console.log(formData);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:1080/api/data", formData)
+      .put("http://localhost:1080/", formData)
       .then((response) => {
         console.log("Data sent successfully", response.data);
       })
@@ -28,6 +29,8 @@ function ProfileData() {
         console.error("Error sending data:", error);
       });
   };
+
+ 
 
   return (
     <>
@@ -56,10 +59,13 @@ function ProfileData() {
               White
               <input
                 type="radio"
-                id="white"
+                id="belt"
                 name="belt"
                 className="proForm__belt--radio"
                 value="white"
+                onChange={(e) =>
+                  setFormData({ ...formData, belt: e.target.value })
+                }
               />
             </label>
 
@@ -70,7 +76,10 @@ function ProfileData() {
                 id="blue"
                 name="belt"
                 className="proForm__belt--radio"
-                value={formData.blue}
+                value="blue"
+                onChange={(e) =>
+                  setFormData({ ...formData, belt: e.target.value })
+                }
               />
             </label>
             <label htmlFor="purple" className="proForm__belt">
@@ -81,6 +90,9 @@ function ProfileData() {
                 name="belt"
                 className="proForm__belt--radio"
                 value="purple"
+                onChange={(e) =>
+                  setFormData({ ...formData, belt: e.target.value })
+                }
               />
             </label>
             <label htmlFor="brown" className="proForm__belt">
@@ -91,6 +103,9 @@ function ProfileData() {
                 name="belt"
                 className="proForm__belt--radio"
                 value="Brown"
+                onChange={(e) =>
+                  setFormData({ ...formData, belt: e.target.value })
+                }
               />
             </label>
             <label htmlFor="black" className="proForm__belt">
@@ -101,6 +116,9 @@ function ProfileData() {
                 name="belt"
                 className="proForm__belt--radio"
                 value="Black"
+                onChange={(e) =>
+                  setFormData({ ...formData, belt: e.target.value })
+                }
               />
             </label>
           </div>
@@ -109,53 +127,115 @@ function ProfileData() {
               Your grappling experience
             </h4>
             <div className="proForm__yrBtns">
-                <label htmlFor="lessOne" className="proForm__experience--radios">
-                    <input type="radio" id="lessOne" name="years" className="proForm__yrRadio" />
-                </label>
-                <label htmlFor="one" className="proForm__experience--radios">
-                    <input type="radio" id="one" name="years" className="proForm__yrRadio" />
-                </label>
-                <label htmlFor="two" className="proForm__experience--radios">
-                    <input type="radio" id="two" name="years" className="proForm__yrRadio" />
-                </label>
-                <label htmlFor="three" className="proForm__experience--radios">
-                    <input type="radio" id="three" name="years" className="proForm__yrRadio" />
-                </label>
-                <label htmlFor="four" className="proForm__experience--radios">
-                    <input type="radio" id="four" name="years" className="proForm__yrRadio" />
-                </label>
-                <label htmlFor="five" className="proForm__experience--radios">
-                    <input type="radio" id="five" name="years" className="proForm__yrRadio" />
-                </label>
-
+              <label htmlFor="lessOne" className="proForm__experience--radios">
+                {`< 1`}
+                <input
+                  type="radio"
+                  id="lessOne"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="< 1"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
+              <label htmlFor="one" className="proForm__experience--radios">
+                1
+                <input
+                  type="radio"
+                  id="one"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="1"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
+              <label htmlFor="two" className="proForm__experience--radios">
+                2
+                <input
+                  type="radio"
+                  id="two"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="2"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
+              <label htmlFor="three" className="proForm__experience--radios">
+                3
+                <input
+                  type="radio"
+                  id="three"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="3"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
+              <label htmlFor="four" className="proForm__experience--radios">
+                4
+                <input
+                  type="radio"
+                  id="four"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="4"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
+              <label htmlFor="five" className="proForm__experience--radios">
+                5 +
+                <input
+                  type="radio"
+                  id="five"
+                  name="years"
+                  className="proForm__yrRadio"
+                  value="5 +"
+                  onChange={(e) =>
+                    setFormData({ ...formData, experience: e.target.value })
+                  }
+                />
+              </label>
             </div>
           </div>
 
-
-          <label htmlFor="gender" className="proForm__gender">
-            <div className="proForm__genCont">
+          <div className="proForm__genCont">
+            <label htmlFor="male" className="proForm__gender">
+              Male
               <input
                 type="radio"
                 className="proForm__male"
                 name="gender"
-                value={formData.gender}
+                value="male"
                 onChange={(e) =>
                   setFormData({ ...formData, gender: e.target.value })
                 }
               />
+            </label>
 
+            <label htmlFor="female" className="proForm__gender">
+              Female
               <input
                 type="radio"
                 className="proForm__female"
                 name="gender"
-                value={formData.gender}
+                value="female"
                 onChange={(e) =>
                   setFormData({ ...formData, gender: e.target.value })
                 }
               />
-            </div>
+            </label>
+          </div>
 
-          </label>
           <label htmlFor="age" className="proForm__age">
             Your Age
             <input
@@ -211,8 +291,12 @@ function ProfileData() {
             />
           </label>
           <label htmlFor="submit" className="proForm__submit">
-            <button className="proForm__submitBtn">Update</button>
-            <button className="proForm__reset">Reset</button>
+            <button className="proForm__submitBtn" type="submit">
+              Update
+            </button>
+            <button className="proForm__reset" type="reset">
+              Reset
+            </button>
           </label>
         </form>
       </div>

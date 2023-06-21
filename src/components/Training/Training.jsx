@@ -1,12 +1,41 @@
+import axios from "axios";
 import { useState } from "react";
 import "./Training.scss";
 
 function Training() {
 
-  const [formData, setFormData] = useState({
-    hours: '',
-    journal: '',
+
+  const currentDate = new Date();
+  const options = { weekday: 'short', month: 'short', day: 'numeric' };
+  const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+
+  const [trainData, setTrainData] = useState({
+    date: formattedDate,
+    hours: "",
+    journal: "",
+    takedowns: "",
+    positions: "",
+    submissions: "",
+    movements: "",
+    gi: "",
+    nogi: "",
   });
+  console.log(trainData);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+    .post("http://localhost:1080/exercises", trainData)
+    .then((response) => {
+      console.log("Training sent successfully", response.data);
+    })
+    .catch((error) => {
+      console.error("Error sending Training data: ", error);
+    });
+  };
+
   const [toggled, setToggled] = useState(false);
   const [showButtons, setShowButtons] = useState({
     button1: false,
@@ -27,13 +56,13 @@ function Training() {
     setToggled((prevState) => !prevState);
   };
 
-  const currentDate = new Date();
-  const options = { weekday: 'short', month: 'short', day: 'numeric' };
-  const formattedDate = currentDate.toLocaleDateString('en-US', options);
+  const toggleValue = toggled ? 'No Gi' : 'Gi';
+
+ 
 
   return (
     <>
-      <form className="form">
+      <form action="post" className="form" onSubmit={handleSubmit}>
         <div className="form__date">{formattedDate}</div>
         <label className="form__toggle">
           <div
@@ -41,11 +70,13 @@ function Training() {
             onClick={handleToggle}
           >
             <div className="slider"></div>
-            <p className="form__toggle--noGi">Gi</p>
+            <p className="form__toggle--noGi">{toggled ? "No Gi" : "Gi"}</p>
           </div>
         </label>
         <label className="form__hours">Hours Trained
-          <input type="number" pattern="[0-9]" className="form__hours-input" />
+          <input type="number" pattern="[0-9]" className="form__hours-input"
+          onChange={(e)=> setTrainData({...trainData, hours: e.target.value})}
+          />
         </label>
         <div className="form__positions">
           <button
@@ -56,10 +87,18 @@ function Training() {
           </button>
           {showButtons.button1 && (
             <div className="form__button-container">
-              <button className="form__button--move">Single Leg</button>
-              <button className="form__button--move">Double Leg</button>
-              <button className="form__button--move">Osoto Gari</button>
-              <button className="form__button--move">Shoulder Throw</button>
+              <button type="button" className="form__button--move" value="Single Leg"
+              onClick={(e) => setTrainData({...trainData, takedowns: "Single Leg"})} 
+              >Single Leg/</button>
+              <button type="button" className="form__button--move" value="Double Leg"
+              onClick={(e) => setTrainData({...trainData, takedowns: "Double Leg"})} 
+              >Double Leg</button>
+              <button type="button" className="form__button--move" value="Osoto Gari"
+              onClick={(e) => setTrainData({...trainData, takedowns: "Osoto Gari"})} 
+              >Osoto Gari</button>
+              <button type="button" className="form__button--move" value="Shoulder Throw"
+              onClick={(e) => setTrainData({...trainData, takedowns: "Shoulder Throw"})} 
+              >Shoulder Throw</button>
             </div>
           )}
 
@@ -71,10 +110,18 @@ function Training() {
           </button>
           {showButtons.button2 && (
             <div className="form__button-container">
-              <button className="form__button--move">Guard</button>
-              <button className="form__button--move">Side Control</button>
-              <button className="form__button--move">Mount</button>
-              <button className="form__button--move">Back Control</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, positions: "Guard"})} 
+              >Guard</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, positions: "Side Control"})} 
+              >Side Control</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, positions: "Mount"})}
+              >Mount</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, positions: "Back Control"})}
+              >Back Control</button>
             </div>
           )}
 
@@ -86,10 +133,18 @@ function Training() {
           </button>
           {showButtons.button3 && (
             <div className="form__button-container">
-              <button className="form__button--move">Triangle</button>
-              <button className="form__button--move">Arm Bar</button>
-              <button className="form__button--move">Guillotine</button>
-              <button className="form__button--move">Rear Naked Choke</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, submissions: "Triangle"})}
+              >Triangle</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, submissions: "Arm Bar"})}
+              >Arm Bar</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, submissions: "Guillotine"})}
+              >Guillotine</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, submissions: "Rear Naked Choke"})}
+              >Rear Naked Choke</button>
             </div>
           )}
 
@@ -101,15 +156,25 @@ function Training() {
           </button>
           {showButtons.button4 && (
             <div className="form__button-container">
-              <button className="form__button--move">Bridging</button>
-              <button className="form__button--move">Shrimping</button>
-              <button className="form__button--move">Escapes</button>
-              <button className="form__button--move">Guard Passes</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, movements: "Bridging"})}
+              >Bridging</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, movements: "Shrimping"})}
+              >Shrimping</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, movements: "Escapes"})}
+              >Escapes</button>
+              <button type="button" className="form__button--move"
+              onClick={(e) => setTrainData({...trainData, movements: "Guard Passes"})}
+              >Guard Passes</button>
             </div>
           )}
         </div>
+
         <label htmlFor="journal" className="form__journal">
-          <textarea type="text" className="form__journal-input" />
+          <textarea type="text" className="form__journal-input" 
+          onChange={(e) => setTrainData({...trainData, journal: e.target.value})} />
         </label>
         <label htmlFor="submit" className="form__submit">
           <button className="form__submit--button" id="submit">Add Training</button>

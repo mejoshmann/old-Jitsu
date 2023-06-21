@@ -1,3 +1,6 @@
+@import "../../styles/partials/colors";
+@import "../../styles/mixins/mixins";
+
 .nav {
     height: 5rem;
     border: 1px solid #000;
@@ -7,10 +10,12 @@
     align-items: center;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    background-color: $Background;
     
 
 &__home {
     background-image: url(../../assets/icons/home.png);
+    // @use nav-buttons;
     background-repeat: no-repeat;
     background-size: contain;
     color: #000;
@@ -19,7 +24,7 @@
 }
 
 &__activity {
-    background-image: url(../../assets/icons/walk.png);
+    background-image: url(../../assets/icons/exercise.png);
     background-repeat: no-repeat;
     background-size: contain;
     color: #000;
@@ -36,8 +41,8 @@
     height: 2rem;
 }
 
-&__bell {
-    background-image: url(../../assets/icons/bell.png);
+&__knowledge {
+    background-image: url(../../assets/icons/book.png);
     background-repeat: no-repeat;
     background-size: contain;
     color: #000;

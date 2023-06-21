@@ -25,8 +25,7 @@ function Chart() {
         const getData = async () => {
           try {
             const response = await axios.get("http://localhost:1080/");
-
-            setChartData(response.data);
+            setChartData(response.data[0].trainingDates);
 
           } catch (error) {
             console.error("Error fetching chart data:", error);
@@ -41,7 +40,7 @@ function Chart() {
 
   return (
     <div className="barChart">
-      <BarChart width={550} height={150} data={chartData}>
+      <BarChart width={350} height={150} data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" />
         <YAxis />

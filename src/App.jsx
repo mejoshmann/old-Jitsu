@@ -7,6 +7,8 @@ import AddTraining from './Pages/AddTraining';
 import Heading from './components/heading/Heading';
 import Nav from './components/navigation/Nav';
 import Activity from './Pages/Activity';
+
+
 function App() {
   return (
    

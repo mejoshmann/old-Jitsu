@@ -1,31 +1,31 @@
 import { Link } from "react-router-dom";
-import AddTraining from "../../Pages/AddTraining";
-import './Nav.scss';
+import "./Nav.scss";
 function Nav() {
-    return(
-        <div>
-            <nav className="nav">
-               <Link to="/">
-                <div className="nav__home"></div>
-                </Link>
-                
-                <Link to="/Activity">
-                <div className="nav__activity">
-                </div>
-                </Link>
+  return (
+    <div>
+      <nav className="nav">
+        <Link to="/">
+          <div className="nav__home"></div>
+        </Link>
 
-                <Link to="/Training">
-                <div className="nav__add">
-                </div>
-                </Link>
+        <Link to="/Activity">
+          <div className="nav__activity"></div>
+        </Link>
 
-                <div className="nav__bell"></div>
-                <Link to="/Profile">
-                <div className="nav__profile"></div>
-                </Link>
-            </nav>
-        </div>
-    )
+        <Link to="/Training">
+          <div className="nav__add"></div>
+        </Link>
+
+        <Link to="/Knowledge">
+          <div className="nav__knowledge"></div>
+        </Link>
+
+        <Link to="/Profile">
+          <div className="nav__profile"></div>
+        </Link>
+      </nav>
+    </div>
+  );
 }
 
 export default Nav;

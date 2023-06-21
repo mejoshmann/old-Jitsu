@@ -1,0 +1,38 @@
+* {
+    // border: 1px solid black;
+}
+
+.points {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+
+    &__heading--cont {
+    }
+
+    &__heading {
+        margin-top: 0;
+    }
+
+    &__points {
+    }
+
+    &__takedown, 
+    &__sweep, 
+    &__knee,
+    &__guard,
+    &__mount,
+    &__back,
+    &__advantages {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__info {
+        background-color: #eeeeee;
+        padding: .5rem;
+
+    }
+}
