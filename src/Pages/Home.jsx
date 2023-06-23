@@ -7,8 +7,8 @@ function Home() {
     return(
         <>
             <User/>
-            <Chart/>
-            <Pie/>
+            {/* <Chart/> */}
+            {/* <Pie/> */}
             <News/>
         </>
     )

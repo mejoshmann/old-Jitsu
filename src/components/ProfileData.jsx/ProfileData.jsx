@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfileData.scss";
 
@@ -14,6 +14,7 @@ function ProfileData() {
     school: "",
     bio: "",
   });
+  
 
 
 
@@ -21,7 +22,7 @@ function ProfileData() {
     e.preventDefault();
 
     axios
-      .put("http://localhost:1080/", formData)
+      .post("http://localhost:1080/", formData)
       .then((response) => {
         console.log("Data sent successfully", response.data);
       })
@@ -40,7 +41,7 @@ function ProfileData() {
           <h2 className="profile__myProfile">My Profile</h2>
         </div>
         <form action="post" className="proForm" onSubmit={handleSubmit}>
-          <label htmlFor="name" className="proForm__label">
+          <label htmlFor="name" className="proForm__userName">
             User Name
             <input
               type="text"
@@ -55,11 +56,12 @@ function ProfileData() {
           </label>
           <div className="proForm__belt--radios">
             <h4 className="proForm__belt--heading">Belt Colour</h4>
+            <div className="proForm__belt--container">
             <label htmlFor="white" className="proForm__belt">
               White
               <input
                 type="radio"
-                id="belt"
+                id="white"
                 name="belt"
                 className="proForm__belt--radio"
                 value="white"
@@ -122,13 +124,14 @@ function ProfileData() {
               />
             </label>
           </div>
+          </div>
           <div className="proForm__experience">
             <h4 className="proForm__experience--heading">
               Your grappling experience
             </h4>
             <div className="proForm__yrBtns">
               <label htmlFor="lessOne" className="proForm__experience--radios">
-                {`< 1`}
+                {`< 1 Less`}
                 <input
                   type="radio"
                   id="lessOne"
@@ -141,7 +144,7 @@ function ProfileData() {
                 />
               </label>
               <label htmlFor="one" className="proForm__experience--radios">
-                1
+                1 Year
                 <input
                   type="radio"
                   id="one"
@@ -154,7 +157,7 @@ function ProfileData() {
                 />
               </label>
               <label htmlFor="two" className="proForm__experience--radios">
-                2
+                2 Years
                 <input
                   type="radio"
                   id="two"
@@ -167,7 +170,7 @@ function ProfileData() {
                 />
               </label>
               <label htmlFor="three" className="proForm__experience--radios">
-                3
+                3 Years
                 <input
                   type="radio"
                   id="three"
@@ -180,7 +183,7 @@ function ProfileData() {
                 />
               </label>
               <label htmlFor="four" className="proForm__experience--radios">
-                4
+                4 Years
                 <input
                   type="radio"
                   id="four"
@@ -215,19 +218,21 @@ function ProfileData() {
                 type="radio"
                 className="proForm__male"
                 name="gender"
+                id="male"
                 value="male"
                 onChange={(e) =>
                   setFormData({ ...formData, gender: e.target.value })
                 }
               />
             </label>
-
+      
             <label htmlFor="female" className="proForm__gender">
               Female
               <input
                 type="radio"
                 className="proForm__female"
                 name="gender"
+                id="female"
                 value="female"
                 onChange={(e) =>
                   setFormData({ ...formData, gender: e.target.value })
@@ -249,7 +254,7 @@ function ProfileData() {
                 setFormData({ ...formData, age: e.target.value })
               }
             />
-            <p className="proForm__age--value" defaultValue={"0"}>
+            <p className="proForm__age--value" defaultValue={0}>
               {formData.age}
             </p>
           </label>
@@ -280,7 +285,7 @@ function ProfileData() {
             />
           </label>
           <label htmlFor="bio" className="proForm__bio">
-            Bio - About yourself
+            Bio
             <input
               type="text"
               className="proForm__bioInput"
@@ -288,15 +293,14 @@ function ProfileData() {
               onChange={(e) =>
                 setFormData({ ...formData, bio: e.target.value })
               }
+              placeholder="A bit about yourself"
             />
           </label>
           <label htmlFor="submit" className="proForm__submit">
             <button className="proForm__submitBtn" type="submit">
               Update
             </button>
-            <button className="proForm__reset" type="reset">
-              Reset
-            </button>
+           
           </label>
         </form>
       </div>

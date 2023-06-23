@@ -1,7 +1,9 @@
 function KnowledgePage() {
     return(
         <>
+            
             <Knowledge/>
+        
         </>
     )
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './User.scss';
 
 function User() {
     const [name, setName] = useState("");
@@ -25,9 +26,9 @@ function User() {
 
     return(
         <>
-        <div className="you">
-            <h3 className="you__greeting">Hello</h3>
-            <h2 className="you__heading">{name}</h2>
+        <div className="user">
+            <h3 className="user__greeting">Hello</h3>
+            <h2 className="user__heading">{name}</h2>
         </div>
         </>
     )

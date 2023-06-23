@@ -21,7 +21,8 @@ function Training() {
     gi: "",
     nogi: "",
   });
-  console.log(trainData);
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
