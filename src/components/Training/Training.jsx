@@ -11,7 +11,7 @@ function Training() {
 
 
   const [trainData, setTrainData] = useState({
-    date: formattedDate,
+    date: "",
     hours: "",
     journal: "",
     takedowns: "",
@@ -28,7 +28,7 @@ function Training() {
     e.preventDefault();
 
     axios
-    .post("http://localhost:1080/exercises", trainData)
+    .post("http://localhost:1080/training", trainData)
     .then((response) => {
       console.log("Training sent successfully", response.data);
     })
@@ -36,8 +36,7 @@ function Training() {
       console.error("Error sending Training data: ", error);
     });
   };
-
-  const [toggled, setToggled] = useState(false);
+  // const [toggled, setToggled] = useState(false);
   const [showButtons, setShowButtons] = useState({
     button1: false,
     button2: false,
@@ -54,12 +53,11 @@ function Training() {
   };
 
   const handleToggle = () => {
-    setToggled((prevState) => !prevState);
-  };
-
-  const toggleValue = toggled ? 'No Gi' : 'Gi';
-
- 
+    setTrainData((prevState) => ({
+      ...prevState,
+      gi: !prevState.gi,
+    }));
+  }
 
   return (
     <>
@@ -67,16 +65,16 @@ function Training() {
         <div className="form__date">{formattedDate}</div>
         <label className="form__toggle">
           <div
-            className={`toggle-slider ${toggled ? "on" : "off"}`}
+            className={`toggle-slider ${trainData.gi ? "on" : "off"}`}
             onClick={handleToggle}
           >
             <div className="slider"></div>
-            <p className="form__toggle--noGi">{toggled ? "No Gi" : "Gi"}</p>
+            <p className="form__toggle--noGi">{trainData.noGi ? "No Gi" : "Gi"}</p>
           </div>
         </label>
         <label className="form__hours">Hours Trained
           <input type="number" pattern="[0-9]" className="form__hours-input"
-          onChange={(e)=> setTrainData({...trainData, hours: e.target.value})}
+          onChange={(e)=> setTrainData({...trainData, hours: parseInt(e.target.value) || ""})}
           />
         </label>
         <div className="form__positions">

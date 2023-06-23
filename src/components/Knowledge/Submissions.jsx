@@ -10,7 +10,7 @@ function Submissions() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1080/api/knowledge/points"
+          "http://localhost:1080/knowledge/page"
         );
         setSubmissionData(response.data[3].submissions);
       } catch (error) {

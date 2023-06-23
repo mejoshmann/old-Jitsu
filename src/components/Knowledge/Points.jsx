@@ -10,7 +10,7 @@ function Points() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1080/api/knowledge/points"
+          "http://localhost:1080/knowledge/page"
         );
         setPointsData(response.data[0].points);
         console.log(response.data[0].points);

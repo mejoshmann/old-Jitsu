@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { _useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfileData.scss";
 
@@ -22,7 +22,7 @@ function ProfileData() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:1080/", formData)
+      .post("http://localhost:1080/profile", formData)
       .then((response) => {
         console.log("Data sent successfully", response.data);
       })

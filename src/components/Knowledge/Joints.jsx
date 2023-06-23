@@ -10,7 +10,7 @@ function Joints() {
           const fetchData = async () => {
             try {
               const response = await axios.get(
-                "http://localhost:1080/api/knowledge/points"
+                "http://localhost:1080/knowledge/page"
               );
               setJointData(response.data[4].jointlocks);
               console.log(response.data[4])

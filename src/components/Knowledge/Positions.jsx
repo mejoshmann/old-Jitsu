@@ -10,7 +10,7 @@
         const fetchData = async () => {
           try {
             const response = await axios.get(
-              "http://localhost:1080/api/knowledge/points"
+              "http://localhost:1080/knowledge/page"
             );
             setPositionData(response.data[2].positions);
             console.log(response.data[2].positions);

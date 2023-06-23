@@ -1,38 +1,75 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-// import puppeteer from 'puppeteer';
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import "./News.scss";
-// const browser = await puppeteer.launch({ headless: "new" });
+// const puppeteer = require('puppeteer');
+//   const browserObject = require("./browsers/independentBrowser");
+// const scraperController = require("./controllers/pageController");
+// const pageScraper = require("./scraper/independentPageScraper");
+//     // const browser = await puppeteer.launch({ headless: false });
+
+// const kiwi = require("./scraper/josh");
 
 
 function News() {
-  const [eventDate, setEventDate] = useState("");
-  const [event, setEvent] = useState("");
+
+
+  
+
+
+// console.log("pageScraper: ", pageScraper);
+
+// const grapplingKiwi = require("./scraper/josh");
+
+// async function runScraper() {
+//   const websiteUrl = "https://grapplingindustries.smoothcomp.com/en/event/9408";
+//   const extractedData = await grapplingKiwi.scrapeWebsite(websiteUrl);
+
+//   // Use the extracted data as needed
+//   console.log(extractedData);
+// }
+
+// runScraper();
+
+
+
+  // const url = `https://grapplingindustries.smoothcomp.com/en/event/9408`
+  // // const [eventDate, setEventDate] = useState("");
+  // // const [event, setEvent] = useState("");
 
   // async function scrapeData() {
-  //   try {
-  //     // Make a request to the back-end endpoint
-  //     const response = await axios.get('/scrape');
-  //     const data = response.data;
-  
-  //     // Update the state variables with the response data
-  //     setEvent(data.title);
-  //     setEventDate(data.info);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  
+  //   const browser = await puppeteer.launch({ headless: false });
+  //   const page = await browser.newPage();
+  //   await page.goto(url);
+  //   const result = await page.evaluate(() => {
+  //     const upcomingEvents = [];
+  //     const listOfEvents = document.querySelectorAll('div:nth-of-type(3) a.event-title div:nth-of-type(3) span:nth-of-type(n+2) div:nth-of-type(3) div.flex-grow-1, div:nth-of-type(3) .days span span');
+  //     console.log("list of events",listOfEvents);
+  //      listOfEvents.forEach((item) => upcomingEvents.push(item.textContent));
+  //     return upcomingEvents;
+  //   })
+  //   await browser.close();
+  //   return result;
   // }
 
-  // Invoke the scrapeData function when the page finishes loading
-  // window.addEventListener('load', scrapeData);
-
+  // scrapeData()
+  // .then((returnVal) => {
+  //   fs.writeFile('./data.json', returnVal.join(','), (err, data) => {
+  //     if (err) {
+  //       console.error(err);
+  //     } else {
+  //       console.log('Data written to data.json');
+  //     }
+  //   });
+  // })
+  // .catch((error) => {
+  //   console.error('Error:', error);
+  // });
 
 
   return (
     <>
      <div className="news">
-     <div className="news__comp--heading1">
+     {/* <div className="news__comp--heading1">
   <h1>{event}</h1>
 </div>
 <div className="news__comp--date">{eventDate}</div>
@@ -45,20 +82,8 @@ function News() {
             <div className="news__comp--date">{eventDate}</div>
             <div className="news__comp--link"></div>
           </div>
-          {/* 
-          <div className="news__comp--container">
-      <div className="news__comp--heading2">{secondTitle}</div>
-      <div className="news__comp--local"></div>
-      <div className="news__comp--date">{secondDate}</div>
-      <div className="news__comp--link"></div>
-      </div>
-      <div className="news__comp--container">
-      <div className="news__comp--heading3"></div>
-      <div className="news__comp--local"></div>
-      <div className="news__comp--date"></div>
-      <div className="news__comp--link"></div>
-      </div> */}
-        </div>
+     
+        </div> */}
       </div>
     </>
   );

@@ -10,7 +10,7 @@ function Takedowns() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1080/api/knowledge/points"
+          "http://localhost:1080/knowledge/page"
         );
         setTakedownData(response.data[1].takedowns);
       } catch (error) {
